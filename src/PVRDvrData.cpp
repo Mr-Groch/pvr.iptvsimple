@@ -142,7 +142,11 @@ bool PVRDvrData::LoadTimers(void)
         {
           if (jobEntry.Timer.startTime > time(NULL) || jobEntry.Timer.iTimerType != PVR_TIMER_TYPE_NONE || jobEntry.Timer.endTime > time(NULL))
           {
-            m_timers[jobEntry.Timer.iClientIndex] = jobEntry; 
+            PVRIptvChannel currChannel;
+            if (GetChannel(jobEntry.Timer, currChannel))
+            {
+              m_timers[jobEntry.Timer.iClientIndex] = jobEntry;
+            }
           }
         }
       }

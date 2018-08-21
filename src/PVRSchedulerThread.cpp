@@ -107,7 +107,7 @@ void *PVRSchedulerThread::Process(void)
 
           if (currTimer.Timer.state == PVR_TIMER_STATE_CANCELLED) 
           {
-            XBMC->Log(LOG_NOTICE, "Try to delete timer %s", currTimer.Timer.strTitle);
+            XBMC->Log(LOG_NOTICE, "Timer canceled. Try to delete timer %s", currTimer.Timer.strTitle);
             
             if (m_dvr->DeleteTimer(currTimer, true))
               XBMC->Log(LOG_NOTICE, "Successfully deleted.");  
@@ -116,7 +116,7 @@ void *PVRSchedulerThread::Process(void)
           {
             if (currTimer.Timer.iTimerType != PVR_TIMER_TYPE_NONE) 
             {
-              XBMC->Log(LOG_NOTICE, "Try to reschedule timer %s", currTimer.Timer.strTitle);
+              XBMC->Log(LOG_NOTICE, "Stream stopped. Try to reschedule timer %s", currTimer.Timer.strTitle);
             
               if (!m_dvr->RescheduleTimer(currTimer)) 
               {
@@ -147,7 +147,7 @@ void *PVRSchedulerThread::Process(void)
           {
             if (currTimer.Timer.iTimerType != PVR_TIMER_TYPE_NONE) 
             {
-              XBMC->Log(LOG_NOTICE, "Try to reschedule timer %s", currTimer.Timer.strTitle);
+              XBMC->Log(LOG_NOTICE, "Recording ended. Try to reschedule timer %s", currTimer.Timer.strTitle);
           
               if (!m_dvr->RescheduleTimer(currTimer)) 
               {

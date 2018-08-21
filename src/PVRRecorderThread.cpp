@@ -351,6 +351,7 @@ void *PVRRecorderThread::Process(void)
   // POSIX
   e_Stream.set_binary_mode(exec_stream_t::s_out);
   e_Stream.set_wait_timeout(exec_stream_t::s_out, g_iStrmTimeout*1000);
+  e_Stream.set_wait_timeout(exec_stream_t::s_child, g_iStrmTimeout*1000);
   e_Stream.start(g_strFFMPEG, strParams);
 
   XBMC->Log(LOG_NOTICE, "Set stream timeout: %d", g_iStrmTimeout);
